@@ -1,0 +1,27 @@
+export const Exercises = {
+    StrongBack: "StrongBack",
+    PulseRows: "PulseRows",
+    ElbowToTheKnee: "ElbowToTheKnee",
+    StandingButterfly: "StandingButterfly",
+    Plank: "Plank",
+    JumpingJacks: "JumpingJacks",
+    Crunches: "Crunches",
+    Squat: "Squat",
+    SumoSquat: "SumoSquat",
+    SquatJump: "SquatJump",
+    SquatBackJump: "SquatBackJump",
+    RomanianDeadLift: "RomanianDeadLift",
+    Launge: "Launge",
+    LungeToKneeRise: "LungeToKneeRise",
+    LungeJumpToKneeRise: "LungeJumpToKneeRise",
+    SidePlank: "SidePlank",
+    BicycleCrunches: "BicycleCrunches",
+    PushUps: "PushUps",
+    AbdominalCrunch: "AbdominalCrunch",
+    WallSit: "WallSit",
+    TricepsDipOnChair: "TricepsDipOnChair",
+    HighKneesRunningInPlace: "HighKneesRunningInPlace",
+    PushUpAndRotation: "PushUpAndRotation",
+    ButtKicks: "ButtKicks"
+}
+
