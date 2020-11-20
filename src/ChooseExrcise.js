@@ -1,8 +1,8 @@
 
 import './ChooseExrcise.css';
 import React, { useState } from 'react';
-import Form from "./component/Form";
-import ExerciseList from "./component/ExerciseList";
+import Form from "./Components/Form";
+import ExerciseList from "./Components/ExerciseList";
 
 
 function ChooseExrcise() {
@@ -19,7 +19,10 @@ function ChooseExrcise() {
         setExercises={setExercises}
         inputText={inputText}
         />
-      <ExerciseList/>
+      <ExerciseList  
+        Exercises={Exercises}
+        setExercises={setExercises}
+      />
     </div>
   );
 };
