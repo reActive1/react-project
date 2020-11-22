@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "./CssComponents/Sidebar.css";
 import {SidebarData} from './SidebarData';
 import {useHistory} from 'react-router-dom';
 
