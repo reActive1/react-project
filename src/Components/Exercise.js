@@ -13,11 +13,12 @@ export class Exercise extends React.Component {
     }
 
     generateNumber(min, max) {
-        return Math.floor(Math.random()*(max-min+1)+min)
+        return  Math.floor(Math.random()*(max));
     }
 
-    render(){
-        return <div><button onClick = {(e) => {e.preventDefault(); this.getRandomExercise(Exercises);}}>Start random exercise!</button></div>
+    render(){ // in order to get a random exercise (without choosing a specific category), call: this.getRandomExercise(this.getRandomExercise(Exercises))
+              // in order to get a rendom execise from a specific category, call: this.getRandomExercise(Exercises.CATGEORYNAME)
+        return <div><button onClick = {(e) => {e.preventDefault(); this.getRandomExercise(this.getRandomExercise(Exercises));}}>Start random exercise!</button></div>
     }
 }
 
