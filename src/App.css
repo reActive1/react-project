@@ -10,8 +10,9 @@ body{
 
 .Sidebar{
   height: 100%;
-  width: 250px;
+  width: 20%;
   background-color: #2F4050;
+  float: left;
 }
 
 .SidebarList{
@@ -54,8 +55,7 @@ body{
 
 .Home {
   background-color: forestgreen;
-  width: 100vw;
-  height: 100vh;
-  padding-left: 250px;
-
+  width: 80%;
+  height: 100%;
+  float: left;
 }

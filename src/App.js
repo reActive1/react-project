@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { Exercise } from './Components/Exercise';
 import Home from "./Components/Home"
 import Overview from "./Components/Overview"
+import CreateYourTrain from './Components/CreateYourTrain';
 
 import {SideBarData} from "./Components/SidebarData"
 
@@ -14,6 +15,7 @@ function App() {
       <Sidebar />
       <Route path="/home" exact component={Home} /> 
       <Route path="/overview" exact component={Overview} /> 
+      <Route path="/createYourTrain" exact component={CreateYourTrain} />
 
     </div>
   );
