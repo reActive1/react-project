@@ -13,17 +13,17 @@ export const SidebarData = [{
     component: Home
 },
 {
-    title: "Overview",
+    title: "Over view",
     icon: <HistoryIcon />,
     link: "/overview"
 },
 {
-    title: "CreateYourTrain",
+    title: "Create Your Train",
     icon: <BuildIcon />,
     link: "/createYourTrain"
 },
 {
-    title: "LikedTrains",
+    title: "Liked Trains",
     icon: <FavoriteIcon />,
     link: "/likedTrains"
 },
