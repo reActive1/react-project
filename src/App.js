@@ -6,17 +6,17 @@ import Home from "./Components/Home"
 import Overview from "./Components/Overview"
 import CreateYourTrain from './Components/CreateYourTrain';
 
-import {SideBarData} from "./Components/SidebarData"
+import {SidebarData} from "./Components/SidebarData"
 
 function App() {
-  // todo: use map for routes and also create routes for other components
   return (
     <div className="App">
       <Sidebar />
-      <Route path="/home" exact component={Home} /> 
-      <Route path="/overview" exact component={Overview} /> 
-      <Route path="/createYourTrain" exact component={CreateYourTrain} />
-
+      { SidebarData.map((item, index) => {
+        return (
+          <Route path={item.link} exact component={item.component}></Route>
+        )
+      })}
     </div>
   );
 }

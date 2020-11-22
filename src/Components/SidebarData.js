@@ -5,6 +5,10 @@ import BuildIcon from '@material-ui/icons/Build';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MailIcon from '@material-ui/icons/Mail';
 import Home from "./Home"
+import CreateYourTrain from './CreateYourTrain';
+import Overview from './Overview';
+import LikedTrains from './LikedTrains';
+import ContactUs from './ContactUs';
 
 export const SidebarData = [{
     title: "Home",
@@ -13,22 +17,27 @@ export const SidebarData = [{
     component: Home
 },
 {
-    title: "Over view",
+    title: "Overview",
     icon: <HistoryIcon />,
-    link: "/overview"
+    link: "/overview",
+    component: Overview
 },
 {
     title: "Create Your Train",
     icon: <BuildIcon />,
-    link: "/createYourTrain"
+    link: "/createYourTrain",
+    component: CreateYourTrain
 },
 {
     title: "Liked Trains",
     icon: <FavoriteIcon />,
-    link: "/likedTrains"
+    link: "/likedTrains",
+    component: LikedTrains
 },
 {
-    title: "ContactUs",
+    title: "Contact Us",
     icon: <MailIcon />,
-    link: "/contactUs"
-}]
+    link: "/contactUs",
+    component: ContactUs
+}
+]
