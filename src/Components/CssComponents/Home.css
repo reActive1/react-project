@@ -1,6 +1,12 @@
 .Home {
-  background-color: forestgreen;
+  background-color: lightYellow;
   width: 80%;
   height: 100vh;
   float: left;
+}
+
+.Logo {
+   position: fixed;
+   top: 10%;
+   right:30%;
 }
