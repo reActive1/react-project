@@ -1,3 +1,4 @@
+
 export const Exercises = {
      Back: {
            Supermans: "Supermans", // https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/9/supermans/
@@ -42,3 +43,56 @@ export const Exercises = {
        SupineSpinalTwistWithRibGrab: "Supine Spinal Twist with Rib Grab and Progressions" //https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/229/supine-spinal-twist-with-rib-grab-and-progressions/
    }
 }
+
+
+
+export const timeOptions = [
+    {
+      key: '5',
+      text: '5',
+      value: '5',
+    },
+    {
+      key: '10',
+      text: '10',
+      value: '10',
+    },
+    {
+      key: '15',
+      text: '15',
+      value: '15',
+    },
+    {
+      key: '20',
+      text: '20',
+      value: '20',
+    },
+]
+
+export const timeRepeat = [
+    {
+      key: '5',
+      text: '5',
+      value: '5',
+    },
+    {
+      key: '10',
+      text: '10',
+      value: '10',
+    },
+    {
+      key: '15',
+      text: '15',
+      value: '15',
+    },
+    {
+      key: '20',
+      text: '20',
+      value: '20',
+    },
+    {
+      key: '30',
+      text: '30',
+      value: '30',
+    },
+]
