@@ -20,6 +20,10 @@ function App() {
           <Route path={item.link} exact component={item.component}></Route>
         )
       })}
+      <Route path="/home" exact component={Home} /> 
+      <Route path="/overview" exact component={Overview} /> 
+      <Route path="/createYourTrain" exact component={CreateYourTrain} />
+      <Route path="/ChooseExrcise" component={ChooseExrcise} />
     </div>
     </Router>
   );
