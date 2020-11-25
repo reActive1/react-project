@@ -6,7 +6,7 @@ import Home from "./Components/Home";
 import Overview from "./Components/Overview";
 import CreateYourTrain from './Components/CreateYourTrain';
 import ChooseExrcise from "./ChooseExrcise";
-import {SideBarData} from "./Components/SidebarData";
+import {SidebarData} from "./Components/SidebarData";
 
 function App() {
   // todo: use map for routes and also create routes for other components
