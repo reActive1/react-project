@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <Sidebar />
+      <Route path={"/"} exact component={Home}></Route>
       { SidebarData.map((item, index) => {
         return (
           <Route path={item.link} exact component={item.component}></Route>
