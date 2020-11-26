@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import {Exercises as E1 } from "../Common/Enums";
 import 'semantic-ui-css/semantic.min.css';
 import { Dropdown } from 'semantic-ui-react'
+import {getRandomExercise} from './RandomExercise'
 
 const Form = ({setInputText,Exercises, setExercises,inputText}) => {
-  
     var [selectedExercise, setSelectedExercise] = useState([]);
     const [selectedExerciseList, setSelectedExerciseList] = useState(null);
     const convertToArray = (obj) => {
@@ -29,7 +29,17 @@ const Form = ({setInputText,Exercises, setExercises,inputText}) => {
         console.log(selectedExerciseList);
     }
     
-
+//    const returnRandomFunction = (e) =>{
+//    e.preventDefault();
+//    var item = getRandomExercise(getRandomExercise(E1));
+//    console.log(item);
+//    return (
+//              <div>
+//               <h1> rachelii </h1>
+//                  <h1> item </h1>
+//              </div>
+//        )
+//    }
     const inputTextHandler = (e) =>{
         setInputText(e.target.value);
     };
@@ -44,6 +54,8 @@ const Form = ({setInputText,Exercises, setExercises,inputText}) => {
    
     return(
         <form>
+//                 <div><button onClick ={returnRandomFunction}
+//                  className="random-exercise-button"> Start random exercise!</button></div>
                  <button onClick={sumbitExerciseHandler} className="exercise-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>         

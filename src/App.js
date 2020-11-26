@@ -1,7 +1,6 @@
 import './App.css';
 import Sidebar from "./Components/Sidebar";
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Exercise } from './Components/Exercise';
 import Home from "./Components/Home";
 import Overview from "./Components/Overview";
 import CreateYourTrain from './Components/CreateYourTrain';
@@ -17,7 +16,7 @@ function App() {
       <Route path={"/"} exact component={Home}></Route>
       { SidebarData.map((item, index) => {
         return (
-          <Route path={item.link} exact component={item.component}></Route>
+          <Route key={index} path={item.link} exact component={item.component}> </Route>
         )
       })}
       <Route path="/home" exact component={Home} /> 
