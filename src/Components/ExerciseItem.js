@@ -1,6 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'semantic-ui-react';
-import  {timeOptions}  from "../Common/Enums"
+
 
 
 
@@ -32,18 +31,7 @@ const completeHandler = () => {
             <button onClick={deleteHandler} className="trash-btn">
                 <i className="fas fa-trash"></i>
             </button>
-            <Dropdown
-              placeholder='Select time'
-              fluid
-              selection
-              options={timeOptions}
-                />
-            <Dropdown
-              placeholder='Select repeats'
-              fluid
-              selection
-              options={timeOptions}
-                />
+           
             
         </div>
 

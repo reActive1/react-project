@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Form from "./Components/Form";
 import ExerciseList from "./Components/ExerciseList";
 
+// import ReactDOM from 'react-dom';
 
 function ChooseExrcise() {
   const [inputText, setInputText] = useState("");
@@ -19,6 +20,7 @@ function ChooseExrcise() {
         setExercises={setExercises}
         inputText={inputText}
         />
+
       <ExerciseList  
         Exercises={Exercises}
         setExercises={setExercises}
