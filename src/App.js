@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import Overview from "./Components/Overview";
 import CreateYourTrain from './Components/CreateYourTrain';
 import ChooseTotalTime from "./Components/ChooseTotalTime";
+import Timer from "./Components/Timer";
 import {SidebarData} from "./Components/SidebarData";
 import ChooseExrcise from "./ChooseExrcise";
 
@@ -24,10 +25,12 @@ function App() {
       <Route path="/overview" exact component={Overview} /> 
       <Route path="/createYourTrain" exact component={CreateYourTrain} />
       <Route path="/ChooseTotalTime" component={ChooseTotalTime}/>
-       <Route path="/ChooseExrcise"
+      <Route path="/ChooseExrcise"
                    render={(props) => (
                    <ChooseExrcise {...props}/>
                  )}/>
+      {/* Temporary Timer route- allows to display or work on Timer component */}
+      <Route path="/Timer" exact component={() => <Timer time={20*60*1000} />} /> 
     </div>
     </Router>
   );
