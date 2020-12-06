@@ -6,14 +6,13 @@ import Timer from './Components/Timer';
 
 // import ReactDOM from 'react-dom';
 function ChooseExrcise(props) {
-  const {trainingtime} = props.location.state
+  //const {trainingtime} = props.location.state
   const [inputText, setInputText] = useState("");
   const [Exercises, setExercises] = useState([]);
+ //console.log(this.props.params);
   return (
     <div className="App">
-      console.log({trainingtime})
       <header>
-
         <h1> Hi you! choose your exercise:  </h1>
       </header>
       <Form
@@ -28,7 +27,9 @@ function ChooseExrcise(props) {
         setExercises={setExercises}
       />
     </div>
+    
   );
+  
 };
 
 export default ChooseExrcise;
