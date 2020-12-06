@@ -26,10 +26,8 @@ function ChooseExrcise(props) {
         Exercises={Exercises}
         setExercises={setExercises}
       />
-    </div>
-    
+    </div>   
   );
-  
 };
 
 export default ChooseExrcise;
