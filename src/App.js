@@ -19,7 +19,7 @@ function App() {
         )
       })}
       <Route path="/ChooseTotalTime" component={ChooseTotalTime}/>
-      <Route path="/ChooseExrcise"
+      <Route path="/ChooseExrcise/:trainingtime/:restTime"
                    render={(props) => (
                    <ChooseExrcise {...props}/>
                  )}/>

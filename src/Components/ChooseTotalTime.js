@@ -58,10 +58,7 @@ class ChooseTotalTime extends React.Component {
         return (
           <div className="ContinueLink">
              <NavLink to = {{
-              pathname: "/ChooseExrcise",
-               state: {
-                       trainingtime: "9"
-                       }
+              pathname: `/ChooseExrcise/${this.state.trainingtime}/${this.state.restTime}`
                        }}>
                     Continue to choose exercises
                </NavLink>
