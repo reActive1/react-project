@@ -4,8 +4,9 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./Components/Home";
 import Overview from "./Components/Overview";
 import CreateYourTrain from './Components/CreateYourTrain';
-import ChooseExrcise from "./ChooseExrcise";
+import ChooseTotalTime from "./Components/ChooseTotalTime";
 import {SidebarData} from "./Components/SidebarData";
+import ChooseExrcise from "./ChooseExrcise";
 
 function App() {
   // todo: use map for routes and also create routes for other components
@@ -22,7 +23,11 @@ function App() {
       <Route path="/home" exact component={Home} /> 
       <Route path="/overview" exact component={Overview} /> 
       <Route path="/createYourTrain" exact component={CreateYourTrain} />
-      <Route path="/ChooseExrcise" component={ChooseExrcise} />
+      <Route path="/ChooseTotalTime" component={ChooseTotalTime}/>
+       <Route path="/ChooseExrcise"
+                   render={(props) => (
+                   <ChooseExrcise {...props}/>
+                 )}/>
     </div>
     </Router>
   );

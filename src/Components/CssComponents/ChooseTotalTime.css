@@ -1,4 +1,13 @@
-.TimeSelection {
+.TrainingTimeSelection {
   padding-top: 5%;
   text-align: center;
 }
+.RestTimeSelection {
+  padding-top: 5%;
+  text-align: center;
+}
+.ContinueLink {
+  padding-top: 5%;
+  text-align: center;
+}
+
