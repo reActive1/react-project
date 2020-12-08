@@ -1,48 +1,71 @@
 import React from "react";
 import "./CssComponents/ChooseTotalTime.css";
+import {NavLink} from 'react-router-dom';
 import { Button } from "semantic-ui-react";
 import Timer from './Timer';
+import ChooseExrcise from "../ChooseExrcise.js";
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class ChooseTotalTime extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      isStarted: false,
-      totalDuration: 0 };
-    this.trainningTime = this.trainningTime.bind(this);
+      trainingtime: 0,
+      restTime: 0 };
+    this.updateTrainingTime = this.updateTrainingTime.bind(this);
+    this.updateRestTime = this.updateRestTime.bind(this);
   }
 
-  trainningTime = (totalTime) => {
+
+  updateTrainingTime = (trainingtime) => {
     this.setState({
-      totalDuration: totalTime * 60 * 1000,
-      isStarted: true})
+      trainingtime: trainingtime * 60 * 1000})
   };
-  
-  //reset isStarted to false when completing or stopping training 
-  stopTraining = () => {
-    this.setState({isStarted: false})
-  }
+
+  updateRestTime = (restTime) => {
+      this.setState({
+      restTime: restTime
+      })
+    };
 
   render() {
-    if(!this.state.isStarted) {
+     if ((this.state.trainingtime == 0) || (this.state.restTime == 0)) {
       return (
-        <div className="TimeSelection">
+        <div>
+        <div className="TrainingTimeSelection">
           <h1>Select training time (in minutes):</h1>
           <Button.Group>
-            <Button className="yellow" onClick={() => this.trainningTime(20)}>20</Button>
+            <Button className="yellow" onClick={() =>  this.updateTrainingTime(20)}>20</Button>
             <Button.Or />
-            <Button className="orange" onClick={() => this.trainningTime(30)}>30</Button>
+            <Button className="orange" onClick={() => this.updateTrainingTime(30)}>30</Button>
             <Button.Or />
-            <Button className="red" onClick={() => this.trainningTime(40)}>40</Button>
+            <Button className="red" onClick={() => this.updateTrainingTime(40)}>40</Button>
           </Button.Group>
         </div>
-      );    
-    } else {
-      return (
-        <Timer time={this.state.totalDuration} />
-      )
-    }
+        <div className="RestTimeSelection">
+                  <h1>Select rest time (in seconds):</h1>
+                  <Button.Group>
+                    <Button className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</Button>
+                    <Button.Or />
+                    <Button className="Blue " onClick={() => this.updateRestTime(30)}>30</Button>
+                    <Button.Or />
+                    <Button className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</Button>
+                  </Button.Group>
+            </div>
+         </div>
+      );
+      } else {
+        return (
+          <div className="ContinueLink">
+             <NavLink to = {{
+              pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
+                       }}>
+                    Continue to choose exercises
+               </NavLink>
+           </div>
+        )
+        }
+     }
   }
-}
 
 export default ChooseTotalTime;

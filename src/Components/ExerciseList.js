@@ -5,7 +5,7 @@ const ExerciseList = ( {choosenExercisesArray}) => {
 
     const exercisesDuration = () => {
         let count = 0;
-        Exercises.forEach((exercise) => {
+        choosenExercisesArray.forEach((exercise) => {
             count+= (exercise.time + exercise.restTime) * exercise.repeats;
         })
         //consider removing one restTime from total count

@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./Components/Home";
 import Overview from "./Components/Overview";
 import CreateYourTrain from './Components/CreateYourTrain';
-import ChooseExrcise from "./ChooseExrcise";
+import ExerciseForm from "./Components/ExerciseForm";
 import {SidebarData} from "./Components/SidebarData";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       <Route path="/home" exact component={Home} /> 
       <Route path="/overview" exact component={Overview} /> 
       <Route path="/createYourTrain" exact component={CreateYourTrain} />
-      <Route path="/ChooseExrcise" component={ChooseExrcise} />
+      <Route path="/ExerciseForm" component={ExerciseForm} />
     </div>
     </Router>
   );
