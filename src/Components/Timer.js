@@ -78,6 +78,7 @@ function Timer(props) {
         <div className="button-wrapper">
           {displayPauseOrResumeButton()}
         </div>
+        <div class="container"></div>
       </div>
     )
 }
