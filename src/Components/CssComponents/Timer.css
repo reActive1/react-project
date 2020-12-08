@@ -48,13 +48,7 @@ h1 {
   height: 50vh;
   animation:  animate 5s ease-in-out infinite;
 }
-.outer{
-  position: absolute;
-  left:0;
-  top:0;
-  width: 50%;
-  height: 50vh;
-}
+
 @keyframes animate{
   0%,100%{
       background-image: url("../images/Bird-dog-1.jpg");
