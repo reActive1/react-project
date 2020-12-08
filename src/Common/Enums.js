@@ -47,52 +47,25 @@ export const Exercises = {
 
 
 export const timeOptions = [
+  {
+    key: 5,
+    text: 5,
+    value: 5,
+  },
+  {
+    key: 10,
+    text: 10,
+    value: 10,
+  },
     {
-      key: '5',
-      text: '5',
-      value: '5',
+      key: 15,
+      text: 15,
+      value: 15,
     },
     {
-      key: '10',
-      text: '10',
-      value: '10',
-    },
-    {
-      key: '15',
-      text: '15',
-      value: '15',
-    },
-    {
-      key: '20',
-      text: '20',
-      value: '20',
+      key: 20,
+      text: 20,
+      value: 20,
     },
 ]
 
-export const timeRepeat = [
-    {
-      key: '5',
-      text: '5',
-      value: '5',
-    },
-    {
-      key: '10',
-      text: '10',
-      value: '10',
-    },
-    {
-      key: '15',
-      text: '15',
-      value: '15',
-    },
-    {
-      key: '20',
-      text: '20',
-      value: '20',
-    },
-    {
-      key: '30',
-      text: '30',
-      value: '30',
-    },
-]
