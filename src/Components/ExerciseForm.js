@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import {Exercises} from "../Common/Enums";
 import 'semantic-ui-css/semantic.min.css';
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Label,Form ,Input} from 'semantic-ui-react'
 import {getRandomExercise} from './RandomExercise'
 import  {timeOptions}  from "../Common/Enums"
-import  {timeRepeat}  from "../Common/Enums"
+import ExerciseList from './ExerciseList';
+import {Container, Row, Col} from "shards-react";
 
 
-class Form extends React.Component {
+
+
+class ExerciseForm extends React.Component {
   constructor(props) {
     super(props);
-    
+  
     var ex = Object.keys(Exercises).map((key)=>{
         var obj = {};
         obj[key] = Exercises[key];
@@ -65,9 +68,16 @@ class Form extends React.Component {
         myArray: myArray,
         Types_of_exercises:Types_of_exercises,
         exercise_item : [],
-        choosen_exercises_array:[],
+        choosenExercisesArray:[],
         selectedRandom:"",
+        name: "",
+        time: "",
+        repeats: 1,
+        restTime: 10,
+        id: 1,
       };
+
+      this.randomFunctionHandler = this.randomFunctionHandler.bind(this);
 
 
   }
@@ -93,7 +103,7 @@ handleRand = () =>{
         )
 }
 
-  randomFunctionHandler = (e) => {
+randomFunctionHandler = (e) => {
     e.preventDefault();
   /* First way to show*/
   //  setRandomExercise(selectedRandom = getRandomExercise(getRandomExercise(E1))); 
@@ -105,13 +115,16 @@ handleRand = () =>{
   // );}
   
   // this.setState({selectedRandom: {this.handleRand} })
-  this.setState({selectedRandom:   ( () => {return(
-    <div>
-        {getRandomExercise(getRandomExercise(Exercises))}
-    </div>
-)
- })
-})
+  console.log(getRandomExercise(getRandomExercise(Exercises)));
+  let x= getRandomExercise(getRandomExercise(Exercises))
+  this.setState({name:  x})
+//     // <div>
+  
+      
+//     // </div>
+// )
+//  })
+// })
  
     // setRandomExercise(selectedRandom = () => {
     //     return(
@@ -140,20 +153,30 @@ handleRand = () =>{
 
   sumbitExerciseHandler = (e) => {
     e.preventDefault();
-    this.state.choosen_exercises_array.push(this.state.exercise_item)
-    // console.log(this.state.choosen_exercises_array)
-    // this.props.setInputText(this.state.exercise_item)
-    
+    let array = this.state.choosenExercisesArray;
+    let id = this.state.id;
+    let obj = { name: this.state.name, time: this.state.time, repeats: this.state.repeats, restTime: this.state.restTime, id:id };
+    array.push(obj);
+    id ++;
   
+    this.setState({id:id, choosenExercisesArray: array});
+
 }
 
   
   render() {
+      let {choosenExercisesArray} = this.state;
     return (
-        <form>
+  
+         <Container fluid className="main-content-container px-4">
+         <Row noGutters className="page-header py-4">
+         </Row>
+         <Row>
+            
+         <form>
         <div>
             <div><button onClick={this.randomFunctionHandler} className="random-exercise-button"> Start random exercise!</button></div>
-
+            <Label pointing='right'>Select exrecise type</Label>
             <Dropdown
               placeholder='Select exrecise type'
               fluid
@@ -165,47 +188,51 @@ handleRand = () =>{
           }
               options={this.state.Types_of_exercises}
                 />
-
+               <Form.Field>
+              <Label pointing='right'>Select exrecise</Label>
               <Dropdown
               placeholder='Select exrecise'
               fluid
               search
               selection
               onChange={(event,data)=>{
-                this.state.exercise_item.push({exrecise:data.value})
+                this.setState({name: data.value})
               }}
               options={this.state.current_exercise}
                 />
+                </Form.Field>
+                <Label pointing='right'>Select time</Label>
                 <Dropdown
               placeholder='Select time'
               fluid
               search
               selection
-              onChange={(event,data)=>{
-                this.state.exercise_item.push({time:data.value})
-              }}
-              options={timeOptions}
-                />
-            <Dropdown
-              placeholder='Select repeats'
-              fluid
-              search
-              selection
-              onChange={(event,data)=>{
-                this.state.exercise_item.push({repeats:data.value})
-              }}
-              options={timeOptions}
-                />
 
+              onChange={(event,data)=>{
+                this.setState({time:data.value})
+              }}
+              options={timeOptions}
+                />
+                <Label pointing='right'>Select repeats</Label>
+                  <Input 
+                  placeholder='repeats'
+                  type="number"
+                  onChange={(event,data)=>{
+                    this.setState({repeats:data.value})
+                  }}
+                   />
                 <button onClick={this.sumbitExerciseHandler} className="exercise-button" type="submit">
                     <i className="fas fa-plus-square"></i>
                 </button>         
             </div>
             {/* {selectedRandom} */}
          </form> 
+      <ExerciseList choosenExercisesArray={choosenExercisesArray}/>
 
+         </Row>
+     </Container>
     );
   }
 }
 
-export default Form;
+export default ExerciseForm;

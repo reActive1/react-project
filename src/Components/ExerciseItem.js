@@ -24,7 +24,7 @@ const completeHandler = () => {
     return(
 
         <div className="Exercise">
-            <il className="Exercise-item">{text}</il>
+            <li className="Exercise-item">{text}</li>
             <button onClick={completeHandler} className="complete-btn" >
                 <i className="fas fa-check"></i>
             </button>

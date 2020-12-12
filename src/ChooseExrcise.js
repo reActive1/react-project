@@ -1,8 +1,7 @@
 import './ChooseExrcise.css';
 import React, { useState } from 'react';
-import Form from "./Components/Form";
+import ExerciseForm from "./Components/ExerciseForm";
 import ExerciseList from "./Components/ExerciseList";
-import Timer from './Components/Timer';
 
 // import ReactDOM from 'react-dom';
 function ChooseExrcise(props) {
@@ -15,7 +14,7 @@ function ChooseExrcise(props) {
       <header>
         <h1> Hi you! choose your exercise:  </h1>
       </header>
-      <Form
+      <ExerciseForm 
         setInputText={setInputText} 
         Exercises={Exercises}
         setExercises={setExercises}

@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./Components/Home";
 import ChooseTotalTime from "./Components/ChooseTotalTime";
 import {SidebarData} from "./Components/SidebarData";
+import ExerciseForm from "./Components/ExerciseForm";
 import ChooseExrcise from "./ChooseExrcise";
 import Timer from "./Components/Timer";
 
@@ -23,6 +24,7 @@ function App() {
                    render={(props) => (
                    <ChooseExrcise {...props}/>
                  )}/>
+      <Route path="/ExerciseForm" component={ExerciseForm} />
       {/* Temporary Timer route- allows to display or work on Timer component */}
       <Route path="/Timer" exact component={() => <Timer time={20*60*1000} />} /> 
     </div>

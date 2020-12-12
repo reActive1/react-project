@@ -2,8 +2,6 @@ import React from "react";
 import "./CssComponents/ChooseTotalTime.css";
 import {NavLink} from 'react-router-dom';
 import { Button } from "semantic-ui-react";
-import Timer from './Timer';
-import ChooseExrcise from "../ChooseExrcise.js";
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class ChooseTotalTime extends React.Component {
@@ -58,7 +56,7 @@ class ChooseTotalTime extends React.Component {
         return (
           <div className="ContinueLink">
              <NavLink to = {{
-              pathname: `/ChooseExrcise/${this.state.trainingtime}/${this.state.restTime}`
+              pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
                        }}>
                     Continue to choose exercises
                </NavLink>
