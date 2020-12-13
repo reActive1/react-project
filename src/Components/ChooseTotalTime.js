@@ -2,14 +2,15 @@ import React from "react";
 import "./CssComponents/ChooseTotalTime.css";
 import {NavLink} from 'react-router-dom';
 import { Button } from "semantic-ui-react";
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {Prompt } from 'react-router-dom';
 
 class ChooseTotalTime extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
       trainingtime: 0,
-      restTime: 0 };
+      restTime: 0,
+      formChanged: false };
     this.updateTrainingTime = this.updateTrainingTime.bind(this);
     this.updateRestTime = this.updateRestTime.bind(this);
   }
@@ -17,18 +18,39 @@ class ChooseTotalTime extends React.Component {
 
   updateTrainingTime = (trainingtime) => {
     this.setState({
-      trainingtime: trainingtime * 60 * 1000})
+      trainingtime: trainingtime * 60 * 1000,
+      formChanged: true
+    })
   };
 
   updateRestTime = (restTime) => {
       this.setState({
-      restTime: restTime
+      restTime: restTime,
+      formChanged: true
       })
     };
+    
+    componentDidMount() {
+      window.addEventListener('beforeunload', this.beforeunload.bind(this));
+    }
+  
+    componentWillUnmount() {
+      window.removeEventListener('beforeunload', this.beforeunload.bind(this));
+    }
+  
+    beforeunload(e) {
+      if (this.state.trainingtime !== 0 || this.state.restTime !== 0) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    }
+
 
   render() {
-    return (
-      <div>
+      const {formChanged} = this.state;
+
+      return (
+        <div>
         <div className="TrainingTimeSelection">
           <h1>Select training time (in minutes):</h1>
           <Button.Group>
@@ -49,7 +71,7 @@ class ChooseTotalTime extends React.Component {
             <Button className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</Button>
           </Button.Group>
         </div>
-        {((this.state.trainingtime != 0) && (this.state.restTime != 0)) ? (
+        {((this.state.trainingtime !== 0) && (this.state.restTime !== 0)) ? (
           <div className="ContinueLink">
             <NavLink to = {{
             pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
@@ -60,9 +82,14 @@ class ChooseTotalTime extends React.Component {
         ) : (
               <div></div>
         )}
+       {  ((this.state.trainingtime === 0) || (this.state.restTime === 0)) ? 
+                 <Prompt when={formChanged} message="Are you sure you wanna do that?" /> : ""
+       } 
+   
       </div>
     );
   }
 }
+
 
 export default ChooseTotalTime;
