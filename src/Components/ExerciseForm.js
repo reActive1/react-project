@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {Exercises} from "../Common/Enums";
 import 'semantic-ui-css/semantic.min.css';
-import { Dropdown, Label,Form ,Input} from 'semantic-ui-react'
-import {getRandomExercise} from './RandomExercise'
-import  {timeOptions}  from "../Common/Enums"
+import { Dropdown, Label, Form ,Input } from 'semantic-ui-react';
+import { getRandomExercise } from './RandomExercise';
+import { timeOptions }  from "../Common/Enums";
 import ExerciseList from './ExerciseList';
-import {Container, Row, Col} from "shards-react";
-
-
+import { Container, Row, Col } from "shards-react";
 
 
 class ExerciseForm extends React.Component {
@@ -167,69 +165,72 @@ randomFunctionHandler = (e) => {
   render() {
       let {choosenExercisesArray} = this.state;
     return (
-  
-         <Container fluid className="main-content-container px-4">
-         <Row noGutters className="page-header py-4">
-         </Row>
-         <Row>
-            
-         <form>
-        <div>
-            <div><button onClick={this.randomFunctionHandler} className="random-exercise-button"> Start random exercise!</button></div>
-            <Label pointing='right'>Select exrecise type</Label>
-            <Dropdown
-              placeholder='Select exrecise type'
-              fluid
-              selection
-              onChange={(event, data) => {
-                console.log(data.value);
-                {this.filterExercise(data)}
-            }
-          }
-              options={this.state.Types_of_exercises}
+      <Container fluid className="main-content-container px-4">
+        <Row className="page-header py-4 my-4">
+          <Col><h1> Hi you! choose your exercise:  </h1></Col>
+        </Row>
+         
+        <Row>
+          <Col>
+            <form>
+              <div>
+                <div>
+                  <button onClick={this.randomFunctionHandler} className="random-exercise-button"> Start random exercise!</button>
+                </div>
+                <Label pointing='right'>Select exrecise type</Label>
+                <Dropdown
+                  placeholder='Select exrecise type'
+                  fluid
+                  selection
+                  onChange={(event, data) => {
+                    console.log(data.value);
+                    {this.filterExercise(data)}
+                  }}
+                  options={this.state.Types_of_exercises}
                 />
-               <Form.Field>
-              <Label pointing='right'>Select exrecise</Label>
-              <Dropdown
-              placeholder='Select exrecise'
-              fluid
-              search
-              selection
-              onChange={(event,data)=>{
-                this.setState({name: data.value})
-              }}
-              options={this.state.current_exercise}
-                />
+                <Form.Field>
+                  <Label pointing='right'>Select exrecise</Label>
+                  <Dropdown
+                    placeholder='Select exrecise'
+                    fluid
+                    search
+                    selection
+                    onChange={(event,data)=>{
+                      this.setState({name: data.value})
+                    }}
+                    options={this.state.current_exercise}
+                  />
                 </Form.Field>
                 <Label pointing='right'>Select time</Label>
                 <Dropdown
-              placeholder='Select time'
-              fluid
-              search
-              selection
-
-              onChange={(event,data)=>{
-                this.setState({time:data.value})
-              }}
-              options={timeOptions}
+                  placeholder='Select time'
+                  fluid
+                  search
+                  selection
+                  onChange={(event,data)=>{
+                    this.setState({time:data.value})
+                  }}
+                  options={timeOptions}
                 />
                 <Label pointing='right'>Select repeats</Label>
-                  <Input 
+                <Input 
                   placeholder='repeats'
                   type="number"
                   onChange={(event,data)=>{
                     this.setState({repeats:data.value})
                   }}
-                   />
+                />
                 <button onClick={this.sumbitExerciseHandler} className="exercise-button" type="submit">
-                    <i className="fas fa-plus-square"></i>
+                  <i className="fas fa-plus-square"></i>
                 </button>         
-            </div>
-            {/* {selectedRandom} */}
-         </form> 
-      <ExerciseList choosenExercisesArray={choosenExercisesArray}/>
-
-         </Row>
+              </div>
+              {/* {selectedRandom} */}
+            </form> 
+          </Col>
+          <Col>
+            <ExerciseList choosenExercisesArray={choosenExercisesArray}/>
+          </Col>
+        </Row>
      </Container>
     );
   }

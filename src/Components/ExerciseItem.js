@@ -1,40 +1,24 @@
 import React from 'react';
+import { Row, Col } from "shards-react";
 
 
-
-
-const ExerciseItem = ({text,todo,Exercises,setExercises}) => {
-
+const ExerciseItem = ({exercise,key}) => {
       
 const deleteHandler = () => {
-    setExercises(Exercises.filter((el) => el.id !== todo.id));        
+    // setExercises(Exercises.filter((el) => el.id !== exercise.id));        
 };
-const completeHandler = () => {
-    setExercises(Exercises.map(item => {
-        if(item.id === todo.id){
-            return{
-                ...item, completed: !item.completed
-            }
-        }
-        return item;
-    }));
-}
-
 
     return(
-
-        <div className="Exercise">
-            <li className="Exercise-item">{text}</li>
-            <button onClick={completeHandler} className="complete-btn" >
-                <i className="fas fa-check"></i>
-            </button>
-            <button onClick={deleteHandler} className="trash-btn">
-                <i className="fas fa-trash"></i>
-            </button>
-           
-            
-        </div>
-
+        <Row>
+            <Col xs="1">
+                <button onClick={deleteHandler} className="trash-btn">
+                    <i className="fas fa-trash"></i>
+                </button>
+            </Col>
+            <Col xs="11">
+                <h3><span className="repeats">{exercise.repeats} x </span> {exercise.name}</h3> Duration per set: {exercise.time}  
+            </Col>
+        </Row>
     );
 };
 

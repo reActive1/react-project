@@ -1,5 +1,6 @@
 import React from "react";
 import Exercise from "./ExerciseItem";
+import { Container, Row } from "shards-react";
 
 const ExerciseList = ( {choosenExercisesArray}) => {
 
@@ -14,19 +15,19 @@ const ExerciseList = ( {choosenExercisesArray}) => {
     }
 
     return(
-        <div className="exercise-container">
-            <ul className="exercise-list">
+        <Container>
+            <Row className="py-4">
                 <h1>Training List</h1>
-                {choosenExercisesArray.map((exercise) => (
-                    <Exercise exercise={exercise} key={exercise.id} />
-                ))}
-            </ul>
-            <div className="time-summary">
+            </Row>
+            {choosenExercisesArray.map((exercise) => (
+                <Exercise exercise={exercise} key={exercise.id} />
+            ))}
+            <Row>
                 Current duration with rest breaks: <br />
-                 {exercisesDuration()}
+                {exercisesDuration()}
                 {/* Remaining time to total: */}
-            </div>
-        </div>
+            </Row>
+        </Container>
     );
 };
 
