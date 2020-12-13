@@ -19,7 +19,6 @@ function App() {
           <Route key={index} path={item.link} exact component={item.component}></Route>
         )
       })}
-      <Route path="/ChooseTotalTime" component={ChooseTotalTime}/>
       <Route path="/ChooseExrcise/:trainingtime/:restTime"
                    render={(props) => (
                    <ChooseExrcise {...props}/>
