@@ -27,9 +27,8 @@ class ChooseTotalTime extends React.Component {
     };
 
   render() {
-     if ((this.state.trainingtime == 0) || (this.state.restTime == 0)) {
-      return (
-        <div>
+    return (
+      <div>
         <div className="TrainingTimeSelection">
           <h1>Select training time (in minutes):</h1>
           <Button.Group>
@@ -41,29 +40,29 @@ class ChooseTotalTime extends React.Component {
           </Button.Group>
         </div>
         <div className="RestTimeSelection">
-                  <h1>Select rest time (in seconds):</h1>
-                  <Button.Group>
-                    <Button className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</Button>
-                    <Button.Or />
-                    <Button className="Blue " onClick={() => this.updateRestTime(30)}>30</Button>
-                    <Button.Or />
-                    <Button className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</Button>
-                  </Button.Group>
-            </div>
-         </div>
-      );
-      } else {
-        return (
+          <h1>Select rest time (in seconds):</h1>
+          <Button.Group>
+            <Button className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</Button>
+            <Button.Or />
+            <Button className="Blue " onClick={() => this.updateRestTime(30)}>30</Button>
+            <Button.Or />
+            <Button className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</Button>
+          </Button.Group>
+        </div>
+        {((this.state.trainingtime != 0) && (this.state.restTime != 0)) ? (
           <div className="ContinueLink">
-             <NavLink to = {{
-              pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
-                       }}>
-                    Continue to choose exercises
-               </NavLink>
-           </div>
-        )
-        }
-     }
+            <NavLink to = {{
+            pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
+                      }}>
+                  Continue to choose exercises
+            </NavLink>
+          </div>   
+        ) : (
+              <div></div>
+        )}
+      </div>
+    );
   }
+}
 
 export default ChooseTotalTime;
