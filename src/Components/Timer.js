@@ -3,7 +3,8 @@ import "./CssComponents/Timer.css";
 import {FaPauseCircle, FaPlayCircle} from "react-icons/fa";
 import Countdown, {zeroPad} from "react-countdown";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import BirdDog from "./gifExercise/BirdDog.gif"
+import StartExerciseList from "./StartExerciseList"
+
 function Timer(props) {
   let countdownApi = null;
   const [isPlaying, setIsPlaying] = useState(true);
@@ -78,7 +79,10 @@ function Timer(props) {
         <div className="button-wrapper">
           {displayPauseOrResumeButton()}
         </div>
-        <img className="gifExercise" src = {BirdDog}/>
+  
+          <StartExerciseList/>
+
+     
       </div>
     )
 }
