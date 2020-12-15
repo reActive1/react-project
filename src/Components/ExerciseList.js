@@ -1,18 +1,36 @@
 import React from "react";
 import Exercise from "./ExerciseItem";
-import { Container, Row } from "shards-react";
+import { Container, Row, Button } from "shards-react";
+import {NavLink} from 'react-router-dom';
 
-const ExerciseList = ( {choosenExercisesArray}) => {
+const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTrainingTime}) => {
 
-    const exercisesDuration = () => {
+    const exercisesDurationInSec = () => {
         let count = 0;
         choosenExercisesArray.forEach((exercise) => {
             count+= (exercise.time + exercise.restTime) * exercise.repeats;
         })
-        //consider removing one restTime from total count
-        let displayCount = `${Math.trunc(count/60)}:${count%60} minutes`;
+        return count;
+    }
+    
+    const convertAndDisplaySec = (timeInSec) => {
+        let secDisplay = timeInSec % 60 === 0 ? "00" : timeInSec % 60;
+        let minDisplay = Math.trunc(timeInSec/60) === 0 ? "00" : Math.trunc(timeInSec/60);
+        let displayCount = `${minDisplay}:${secDisplay} minutes`;
         return displayCount;
     }
+
+    //consider removing one restTime from total count
+    //option to add a message of what diff in min:sec exists
+    const isExercisesDurationFitTotalTime = () => {
+        const expectedDiff = 0.05;
+        const actualDiff = totalTrainingTimeInSec - totalExerciseDuration;
+        return Math.abs(actualDiff) <= totalTrainingTimeInSec * expectedDiff;
+    }
+
+
+    const totalTrainingTimeInSec = totalTrainingTime / 1000;
+    const totalExerciseDuration = exercisesDurationInSec();
 
     return(
         <Container>
@@ -20,12 +38,22 @@ const ExerciseList = ( {choosenExercisesArray}) => {
                 <h1>Training List</h1>
             </Row>
             {choosenExercisesArray.map((exercise) => (
-                <Exercise exercise={exercise} key={exercise.id} />
+                <Exercise 
+                    exercise={exercise} 
+                    choosenExercisesArray={choosenExercisesArray} 
+                    updateExercisesArray={updateExercisesArray}
+                    key={exercise.id} />
             ))}
             <Row>
-                Current duration with rest breaks: <br />
-                {exercisesDuration()}
-                {/* Remaining time to total: */}
+                <h6>Current duration with rest breaks: <br /> 
+                <strong>{convertAndDisplaySec(totalExerciseDuration)}</strong></h6>
+                {/* Option to display - Remaining time to total: */}
+            </Row>
+            <Row className="mt-3">
+            <NavLink to = {{ pathname: `/Timer/` }}>
+                  <Button pill theme="info" size="lg" disabled={!isExercisesDurationFitTotalTime()}>START TRAINING</Button>
+            </NavLink>
+                
             </Row>
         </Container>
     );

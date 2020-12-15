@@ -19,11 +19,10 @@ function App() {
           <Route key={index} path={item.link} exact component={item.component}></Route>
         )
       })}
-      <Route path="/ChooseExrcise/:trainingtime/:restTime"
+      <Route path="/ExerciseForm/:trainingtime/:restTime"
                    render={(props) => (
-                   <ChooseExrcise {...props}/>
+                   <ExerciseForm {...props}/>
                  )}/>
-      <Route path="/ExerciseForm" component={ExerciseForm} />
       {/* Temporary Timer route- allows to display or work on Timer component */}
       <Route path="/Timer" exact component={() => <Timer time={20*60*1000} />} /> 
     </div>

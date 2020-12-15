@@ -76,7 +76,7 @@ class ExerciseForm extends React.Component {
       };
 
       this.randomFunctionHandler = this.randomFunctionHandler.bind(this);
-
+      this.updateExercisesArrayHandler = this.updateExercisesArrayHandler.bind(this);
 
   }
 
@@ -159,9 +159,12 @@ randomFunctionHandler = (e) => {
   
     this.setState({id:id, choosenExercisesArray: array});
 
-}
+  }
 
-  
+  updateExercisesArrayHandler = (newExercisesArray) => {
+    this.setState({choosenExercisesArray: newExercisesArray})
+  }
+
   render() {
       let {choosenExercisesArray} = this.state;
     return (
@@ -228,7 +231,11 @@ randomFunctionHandler = (e) => {
             </form> 
           </Col>
           <Col>
-            <ExerciseList choosenExercisesArray={choosenExercisesArray}/>
+            <ExerciseList
+              choosenExercisesArray={choosenExercisesArray} 
+              updateExercisesArray={this.updateExercisesArrayHandler} 
+              totalTrainingTime={this.props.match.params.trainingtime}
+              />
           </Col>
         </Row>
      </Container>
