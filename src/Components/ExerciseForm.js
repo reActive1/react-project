@@ -23,7 +23,7 @@ class ExerciseForm extends React.Component {
     for (var i in ex){
         for (var key in ex[i])
         {
-            Object.keys(ex[i][key]).forEach(item =>{
+            Object.values(ex[i][key]).forEach(item =>{
                 res.push({
                     key: item,
                     text: item,
@@ -67,8 +67,8 @@ class ExerciseForm extends React.Component {
         Types_of_exercises:Types_of_exercises,
         exercise_item : [],
         choosenExercisesArray:[],
-        selectedRandom:"",
-        name: "",
+        type: "Back exercises",
+        name: "Supermans",
         time: "",
         repeats: 1,
         restTime: 10,
@@ -80,18 +80,6 @@ class ExerciseForm extends React.Component {
 
   }
 
-//   const randomFunctionHandler = (e) => {
-//     e.preventDefault();
-//   /* First way to show*/
-//   //  setRandomExercise(selectedRandom = getRandomExercise(getRandomExercise(E1))); 
-//     setRandomExercise(selectedRandom = () => {
-//         return(
-//             <div>
-//                 {getRandomExercise(getRandomExercise(E1))}
-//             </div>
-//         )
-//     });
-// }
 
 handleRand = () =>{
   return(
@@ -103,34 +91,9 @@ handleRand = () =>{
 
 randomFunctionHandler = (e) => {
     e.preventDefault();
-  /* First way to show*/
-  //  setRandomExercise(selectedRandom = getRandomExercise(getRandomExercise(E1))); 
-  // this.setState({selectedRandom:  {getRandomExercise(getRandomExercise(Exercises))} })
-  //   var rand_val = () => {return(
-  //   <div>
-  //     {getRandomExercise(getRandomExercise(Exercises))}
-  //   </div>
-  // );}
-  
-  // this.setState({selectedRandom: {this.handleRand} })
   console.log(getRandomExercise(getRandomExercise(Exercises)));
   let x= getRandomExercise(getRandomExercise(Exercises))
   this.setState({name:  x})
-//     // <div>
-  
-      
-//     // </div>
-// )
-//  })
-// })
- 
-    // setRandomExercise(selectedRandom = () => {
-    //     return(
-    //         <div>
-    //             {getRandomExercise(getRandomExercise(Exercises))}
-    //         </div>
-    //     )
-    // });
 }
   
   filterExercise = (e,data) =>{
@@ -182,11 +145,11 @@ randomFunctionHandler = (e) => {
                 </div>
                 <Label pointing='right'>Select exrecise type</Label>
                 <Dropdown
-                  placeholder='Select exrecise type'
                   fluid
+
                   selection
+                  value={this.state.type}
                   onChange={(event, data) => {
-                    console.log(data.value);
                     {this.filterExercise(data)}
                   }}
                   options={this.state.Types_of_exercises}
@@ -194,10 +157,10 @@ randomFunctionHandler = (e) => {
                 <Form.Field>
                   <Label pointing='right'>Select exrecise</Label>
                   <Dropdown
-                    placeholder='Select exrecise'
                     fluid
                     search
                     selection
+                    value={this.state.name}
                     onChange={(event,data)=>{
                       this.setState({name: data.value})
                     }}
@@ -206,7 +169,7 @@ randomFunctionHandler = (e) => {
                 </Form.Field>
                 <Label pointing='right'>Select time</Label>
                 <Dropdown
-                  placeholder='Select time'
+                  value={this.state.name}
                   fluid
                   search
                   selection
@@ -217,7 +180,7 @@ randomFunctionHandler = (e) => {
                 />
                 <Label pointing='right'>Select repeats</Label>
                 <Input 
-                  placeholder='repeats'
+                  value={this.state.name}
                   type="number"
                   onChange={(event,data)=>{
                     this.setState({repeats:data.value})
@@ -227,7 +190,6 @@ randomFunctionHandler = (e) => {
                   <i className="fas fa-plus-square"></i>
                 </button>         
               </div>
-              {/* {selectedRandom} */}
             </form> 
           </Col>
           <Col>
