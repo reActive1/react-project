@@ -1,13 +1,13 @@
 import React from "react";
 import "./CssComponents/ChooseTotalTime.css";
 import {NavLink} from 'react-router-dom';
-import { Button } from "semantic-ui-react";
+import { Button as ButtonSemanticUI } from "semantic-ui-react";
 import {Prompt } from 'react-router-dom';
 
 class ChooseTotalTime extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       trainingtime: 0,
       restTime: 0,
       formChanged: false };
@@ -29,15 +29,15 @@ class ChooseTotalTime extends React.Component {
       formChanged: true
       })
     };
-    
+
     componentDidMount() {
       window.addEventListener('beforeunload', this.beforeunload.bind(this));
     }
-  
+
     componentWillUnmount() {
       window.removeEventListener('beforeunload', this.beforeunload.bind(this));
     }
-  
+
     beforeunload(e) {
       if (this.state.trainingtime !== 0 || this.state.restTime !== 0) {
         e.preventDefault();
@@ -53,32 +53,41 @@ class ChooseTotalTime extends React.Component {
         <div>
         <div className="TrainingTimeSelection">
           <h1>Select training time (in minutes):</h1>
-          <Button.Group>
-            <Button className="yellow" onClick={() =>  this.updateTrainingTime(20)}>20</Button>
-            <Button.Or />
-            <Button className="orange" onClick={() => this.updateTrainingTime(30)}>30</Button>
-            <Button.Or />
-            <Button className="red" onClick={() => this.updateTrainingTime(40)}>40</Button>
-          </Button.Group>
+          <ButtonSemanticUI.Group>
+            <ButtonSemanticUI className="yellow" onClick={() =>  this.updateTrainingTime(20)}>20</ButtonSemanticUI>
+            <ButtonSemanticUI.Or />
+            <ButtonSemanticUI className="orange" onClick={() => this.updateTrainingTime(30)}>30</ButtonSemanticUI>
+            <ButtonSemanticUI.Or />
+            <ButtonSemanticUI className="red" onClick={() => this.updateTrainingTime(40)}>40</ButtonSemanticUI>
+          </ButtonSemanticUI.Group>
         </div>
         <div className="RestTimeSelection">
           <h1>Select rest time (in seconds):</h1>
-          <Button.Group>
-            <Button className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</Button>
-            <Button.Or />
-            <Button className="Blue " onClick={() => this.updateRestTime(30)}>30</Button>
-            <Button.Or />
-            <Button className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</Button>
-          </Button.Group>
+          <ButtonSemanticUI.Group>
+            <ButtonSemanticUI className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</ButtonSemanticUI>
+            <ButtonSemanticUI.Or />
+            <ButtonSemanticUI className="Blue " onClick={() => this.updateRestTime(30)}>30</ButtonSemanticUI>
+            <ButtonSemanticUI.Or />
+            <ButtonSemanticUI className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</ButtonSemanticUI>
+          </ButtonSemanticUI.Group>
         </div>
         {((this.state.trainingtime !== 0) && (this.state.restTime !== 0)) ? (
-          <div className="ContinueLink">
-            <NavLink to = {{
-            pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
-                      }}>
-                  Continue to choose exercises
-            </NavLink>
-          </div>   
+        <div className="Wrapper">
+        <div className="ContinueLinkChooseExercises">
+           <NavLink className="btn btn-outline-primary" to = {{
+                       pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
+                                 }}>
+                                      choose your exercises
+                       </NavLink>
+            </div>
+            <div className="ContinueLinkRandomExercises">
+                 <NavLink className="btn btn-outline-primary" to = {{
+                                       pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
+                                                 }}>
+                                                      lucky random exercises
+                                       </NavLink>
+            </div>
+         </div>
         ) : (
               <div></div>
         )}
