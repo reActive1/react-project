@@ -4,8 +4,11 @@ import {FaPauseCircle, FaPlayCircle} from "react-icons/fa";
 import Countdown, {zeroPad} from "react-countdown";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import StartExerciseList from "./StartExerciseList"
+import {useLocation} from 'react-router-dom'
 
 function Timer(props) {
+  let location = useLocation();
+  console.log(location);
   let countdownApi = null;
   const [isPlaying, setIsPlaying] = useState(true);
   const [time, setTime] = useState(Date.now()+props.time); 
