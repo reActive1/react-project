@@ -2,6 +2,7 @@ import React from "react";
 import Exercise from "./ExerciseItem";
 import { Container, Row, Button } from "shards-react";
 import {NavLink} from 'react-router-dom';
+import { Label } from 'semantic-ui-react';
 
 const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTrainingTime}) => {
 
@@ -25,12 +26,16 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
     const isExercisesDurationFitTotalTime = () => {
         const expectedDiff = 0.05;
         const actualDiff = totalTrainingTimeInSec - totalExerciseDuration;
-        return Math.abs(actualDiff) <= totalTrainingTimeInSec * expectedDiff;
+        return {
+                 isDurationFitTime: Math.abs(actualDiff) <= totalTrainingTimeInSec * expectedDiff,
+                 diff: actualDiff
+                };
     }
 
 
     const totalTrainingTimeInSec = totalTrainingTime / 1000;
     const totalExerciseDuration = exercisesDurationInSec();
+    const {isDurationFitTime, diff} = isExercisesDurationFitTotalTime();
 
     return(
         <Container>
@@ -51,7 +56,8 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
             </Row>
             <Row className="mt-3">
             <NavLink to = {{ pathname: `/Timer/` }}>
-                  <Button pill theme="info" size="lg" disabled={!isExercisesDurationFitTotalTime()}>START TRAINING</Button>
+                  <Button pill theme="info" size="lg" disabled={!isDurationFitTime}>START TRAINING</Button>
+                 {!isDurationFitTime && <Label basic color='red' pointing='left'>{convertAndDisplaySec(diff)} left, don't be lazy ;)</Label>}
             </NavLink>
                 
             </Row>
