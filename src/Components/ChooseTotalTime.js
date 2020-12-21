@@ -10,7 +10,13 @@ class ChooseTotalTime extends React.Component {
     this.state = {
       trainingtime: 0,
       restTime: 0,
-      formChanged: false };
+      formChanged: false,
+      images: [
+        {name: "BirdDog", time: 5000},
+        {name: "Superman", time: 10000},
+        {name: "CatCow", time: 40000},
+        {name: "FinalTraining", time: 5000}
+       ] };
     this.updateTrainingTime = this.updateTrainingTime.bind(this);
     this.updateRestTime = this.updateRestTime.bind(this);
   }
@@ -82,10 +88,11 @@ class ChooseTotalTime extends React.Component {
             </div>
             <div className="ContinueLinkRandomExercises">
                  <NavLink className="btn btn-outline-primary" to = {{
-                                       pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
-                                                 }}>
-                                                      lucky random exercises
-                                       </NavLink>
+                      pathname: `/Timer`,
+                      state: { myArrayVariableName: this.state.images}
+                                }}>
+                                    lucky random exercises
+                      </NavLink>
             </div>
          </div>
         ) : (
