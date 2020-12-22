@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Exercises} from "../Common/Enums";
+import "./CssComponents/ExerciseForm.css";
 import 'semantic-ui-css/semantic.min.css';
 import { Dropdown, Label, Form ,Input } from 'semantic-ui-react';
 import { getRandomExercise } from './RandomExercise';
@@ -136,7 +137,7 @@ randomFunctionHandler = (e) => {
           <Col><h1> Hi you! choose your exercise:  </h1></Col>
         </Row>
          
-        <Row>
+        <Row className="formRow">
           <Col>
             <form>
               <div>
@@ -146,32 +147,25 @@ randomFunctionHandler = (e) => {
                 <Label pointing='right'>Select exrecise type</Label>
                 <Dropdown
                   fluid
-
                   selection
-                  value={this.state.type}
+                  //value={this.state.type}
                   onChange={(event, data) => {
                     {this.filterExercise(data)}
                   }}
                   options={this.state.Types_of_exercises}
                 />
-                <Form.Field>
                   <Label pointing='right'>Select exrecise</Label>
                   <Dropdown
                     fluid
-                    search
                     selection
-                    value={this.state.name}
                     onChange={(event,data)=>{
                       this.setState({name: data.value})
                     }}
                     options={this.state.current_exercise}
                   />
-                </Form.Field>
                 <Label pointing='right'>Select time</Label>
                 <Dropdown
-                  value={this.state.name}
                   fluid
-                  search
                   selection
                   onChange={(event,data)=>{
                     this.setState({time:data.value})
@@ -180,7 +174,6 @@ randomFunctionHandler = (e) => {
                 />
                 <Label pointing='right'>Select repeats</Label>
                 <Input 
-                  value={this.state.name}
                   type="number"
                   onChange={(event,data)=>{
                     this.setState({repeats:data.value})
