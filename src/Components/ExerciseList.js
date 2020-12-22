@@ -1,6 +1,6 @@
 import React from "react";
 import Exercise from "./ExerciseItem";
-import { Container, Row, Button } from "shards-react";
+import { Container, Row, Button, Tooltip } from "shards-react";
 import {NavLink} from 'react-router-dom';
 import { Label } from 'semantic-ui-react';
 
@@ -26,16 +26,25 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
     const isExercisesDurationFitTotalTime = () => {
         const expectedDiff = 0.05;
         const actualDiff = totalTrainingTimeInSec - totalExerciseDuration;
+        const timeLeftInMin = convertAndDisplaySec(actualDiff);
+        let msgToShow = "";
+        if (actualDiff < 0){
+            msgToShow = "you've reached the training time";
+        }
+        else if (actualDiff > 0){
+            msgToShow = `${timeLeftInMin} left, don't be lazy ;)`;
+        }
         return {
                  isDurationFitTime: Math.abs(actualDiff) <= totalTrainingTimeInSec * expectedDiff,
-                 diff: actualDiff
+                 diff: actualDiff,
+                 msgToShow
                 };
     }
 
 
     const totalTrainingTimeInSec = totalTrainingTime / 1000;
     const totalExerciseDuration = exercisesDurationInSec();
-    const {isDurationFitTime, diff} = isExercisesDurationFitTotalTime();
+    const {isDurationFitTime, diff, msgToShow} = isExercisesDurationFitTotalTime();
 
     return(
         <Container>
@@ -57,9 +66,8 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
             <Row className="mt-3">
             <NavLink to = {{ pathname: `/Timer/` }}>
                   <Button pill theme="info" size="lg" disabled={!isDurationFitTime}>START TRAINING</Button>
-                 {!isDurationFitTime && <Label basic color='red' pointing='left'>{convertAndDisplaySec(diff)} left, don't be lazy ;)</Label>}
             </NavLink>
-                
+            {!isDurationFitTime && <Label basic color='red' pointing='left'>{msgToShow}</Label>}
             </Row>
         </Container>
     );
