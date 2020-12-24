@@ -1,5 +1,5 @@
 import React from 'react';
-import "./CssComponents/Us.css";
+import "./CssComponents/ContactUs.css";
 import emailjs from 'emailjs-com';
 // ---template, please override this :)
 class ContactUs extends React.Component {
@@ -45,12 +45,9 @@ class ContactUs extends React.Component {
                 </div> 
                 <div className="col-md-6">
                     <div className="myRightCtn">
-                            <div className="box"><header>Hello World!</header>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna 
-                                aliqua. Ut enim ad minim veniam.</p>
-                                <input type="button" className="butt_out" value="Learn More"/>
-                            </div>
+                    <div className="box text-white pb-5"><header>We’d love to hear from you</header>
+                            <p className="contact-text pt-4">Whether you have a question about the application, have feedback to give, idea to improve or just share anything in your heart and mind, we would love to hear from you</p>
+                    </div>
                     </div>
                 </div>
             </div>
