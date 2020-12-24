@@ -1,7 +1,7 @@
 import React from 'react';
 import "./CssComponents/ContactUs.css";
 import emailjs from 'emailjs-com';
-// ---template, please override this :)
+
 class ContactUs extends React.Component {
     sendEmail(e) {
 		e.preventDefault();
@@ -15,47 +15,44 @@ class ContactUs extends React.Component {
 	}
     render(){
         return (
-
-    <div className="container">
-        <div className="myCard">
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="myLeftCtn"> 
-                        <form className="myForm text-center" onSubmit={this.sendEmail}>
-                            <header>Contact Us</header>
-                            <div className="form-group">
-                                <i className="fas fa-user"></i>
-								<input className="myInput" type="text" placeholder="Full Name" id="username" name="full_name" required/>
+            <div className="container">
+                <div className="myCard">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="myLeftCtn"> 
+                                <form className="myForm text-center" onSubmit={this.sendEmail}>
+                                    <header>Contact Us</header>
+                                    <div className="form-group">
+                                        <i className="fas fa-user"></i>
+                                        <input className="myInput" type="text" placeholder="Full Name" id="username" name="full_name" required/>
+                                    </div>
+                                    <div className="form-group">
+                                        <i className="fas fa-envelope"></i>
+                                        <input className="myInput" type="email" placeholder="E-mail" id="email" name="email" required/>
+                                    </div>
+                                    <div className="form-group">
+                                        <i className="fas fa-phone"></i>
+                                        <input className="myInput" type="text" id="phone" placeholder="Phone" name="phone"/> 
+                                    </div>
+                                    <div className="form-group text-area">
+                                        <i className="fas fa-envelope-open-text"></i>
+                                        <textarea className="myInput" id="message" placeholder="Your Message" rows="4" cols="30" name="message"/>
+                                    </div>
+                                    <input type="submit"  className="butt" value="SEND"/>
+                                </form>
                             </div>
-                            <div className="form-group">
-                                <i className="fas fa-envelope"></i>
-								<input className="myInput" type="email" placeholder="E-mail" id="email" name="email" required/>
+                        </div> 
+                        <div className="col-md-6">
+                            <div className="myRightCtn">
+                                <div className="box text-white pb-5 text-center"><header>We’d love to hear from you</header>
+                                    <p className="contact-text pt-4">Whether you have a question about the application, have feedback to give, idea to improve or just share anything in your heart and mind, we would love to hear from you</p>
+                                </div>
                             </div>
-                            <div className="form-group">
-                                <i className="fas fa-phone"></i>
-								<input className="myInput" type="text" id="phone" placeholder="Phone" name="phone"/> 
-                            </div>
-							<div className="form-group text-area">
-								<i className="fas fa-envelope-open-text"></i>
-								<textarea className="myInput" id="message" placeholder="Your Message" rows="4" cols="30" name="message"/>
-                            </div>
-							<input type="submit"  className="butt" value="SEND"/>
-                        </form>
-                    </div>
-                </div> 
-                <div className="col-md-6">
-                    <div className="myRightCtn">
-                    <div className="box text-white pb-5"><header>We’d love to hear from you</header>
-                            <p className="contact-text pt-4">Whether you have a question about the application, have feedback to give, idea to improve or just share anything in your heart and mind, we would love to hear from you</p>
-                    </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-</div>
-      
-
-            )
+            </div>  
+        )
     }
 }
 
