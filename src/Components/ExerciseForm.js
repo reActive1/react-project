@@ -139,7 +139,7 @@ randomFunctionHandler = (e) => {
          
         <Row className="formRow">
           <Col>
-            <form>
+            <form className="exercise-form">
               <div>
                 <div>
                   <button onClick={this.randomFunctionHandler} className="random-exercise-button"> Start random exercise!</button>

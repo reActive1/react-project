@@ -15,9 +15,9 @@ class ContactUs extends React.Component {
 	}
     render(){
         return (
-            <div className="container">
+            <div className="container card-container">
                 <div className="myCard">
-                    <div className="row">
+                    <div className="row card-row">
                         <div className="col-md-6">
                             <div className="myLeftCtn"> 
                                 <form className="myForm text-center" onSubmit={this.sendEmail}>
