@@ -35,7 +35,7 @@ class ContactUs extends React.Component {
                                         <input className="myInput" type="text" id="phone" placeholder="Phone" name="phone"/> 
                                     </div>
                                     <div className="form-group text-area">
-                                        <i className="fas fa-envelope-open-text"></i>
+                                        <i className="fas fa-envelope-open-text tesxtarea-contact"></i>
                                         <textarea className="myInput" id="message" placeholder="Your Message" rows="4" cols="30" name="message"/>
                                     </div>
                                     <input type="submit"  className="butt" value="SEND"/>
