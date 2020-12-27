@@ -23,12 +23,10 @@ class ChooseTotalTime extends React.Component {
 
 
   updateTrainingTime = (trainingtime) => {
-   
     this.setState({
       trainingtime: trainingtime * 60 * 1000,
       formChanged: true
     })
-    console.log(this.state);
   };
 
   updateRestTime = (restTime) => {
@@ -38,20 +36,20 @@ class ChooseTotalTime extends React.Component {
       })
     };
 
-    // componentDidMount() {
-    //   window.addEventListener('beforeunload', this.beforeunload.bind(this));
-    // }
+    componentDidMount() {
+      window.addEventListener('beforeunload', this.beforeunload.bind(this));
+    }
 
-    // componentWillUnmount() {
-    //   window.removeEventListener('beforeunload', this.beforeunload.bind(this));
-    // }
+    componentWillUnmount() {
+      window.removeEventListener('beforeunload', this.beforeunload.bind(this));
+    }
 
-    // beforeunload(e) {
-    //   if (this.state.trainingtime !== 0 || this.state.restTime !== 0) {
-    //     e.preventDefault();
-    //     e.returnValue = "";
-    //   }
-    // }
+    beforeunload(e) {
+      if (this.state.trainingtime !== 0 || this.state.restTime !== 0) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    }
 
 
   render() {
@@ -121,9 +119,9 @@ class ChooseTotalTime extends React.Component {
                     </div>
                 </div>
             </div> 
-       {/* {  ((this.state.trainingtime === 0) || (this.state.restTime === 0)) ? 
+       {  ((this.state.trainingtime === 0) || (this.state.restTime === 0)) ? 
                  <Prompt when={formChanged} message="Are you sure you wanna do that?" /> : ""
-       }  */}
+       } 
    
       </div>
     );
