@@ -57,47 +57,68 @@ class ChooseTotalTime extends React.Component {
 
       return (
         <div>
-        <div className="TrainingTimeSelection">
-          <h1>Select training time (in minutes):</h1>
-          <ButtonSemanticUI.Group>
-            <ButtonSemanticUI className="yellow" onClick={() =>  this.updateTrainingTime(20)}>20</ButtonSemanticUI>
-            <ButtonSemanticUI.Or />
-            <ButtonSemanticUI className="orange" onClick={() => this.updateTrainingTime(30)}>30</ButtonSemanticUI>
-            <ButtonSemanticUI.Or />
-            <ButtonSemanticUI className="red" onClick={() => this.updateTrainingTime(40)}>40</ButtonSemanticUI>
-          </ButtonSemanticUI.Group>
-        </div>
-        <div className="RestTimeSelection">
-          <h1>Select rest time (in seconds):</h1>
-          <ButtonSemanticUI.Group>
-            <ButtonSemanticUI className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</ButtonSemanticUI>
-            <ButtonSemanticUI.Or />
-            <ButtonSemanticUI className="Blue " onClick={() => this.updateRestTime(30)}>30</ButtonSemanticUI>
-            <ButtonSemanticUI.Or />
-            <ButtonSemanticUI className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</ButtonSemanticUI>
-          </ButtonSemanticUI.Group>
-        </div>
-        {((this.state.trainingtime !== 0) && (this.state.restTime !== 0)) ? (
-        <div className="Wrapper">
-        <div className="ContinueLinkChooseExercises">
-           <NavLink className="btn btn-outline-primary" to = {{
-                       pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
-                                 }}>
-                                      choose your exercises
-                       </NavLink>
-            </div>
-            <div className="ContinueLinkRandomExercises">
-                 <NavLink className="btn btn-outline-primary" to = {{
-                      pathname: `/Timer`,
-                      state: { myArrayVariableName: this.state.images}
-                                }}>
-                                    lucky random exercises
-                      </NavLink>
-            </div>
-         </div>
-        ) : (
-              <div></div>
-        )}
+             <div className="container card-container">
+                <div className="myCard">
+                    <div className="row card-row">
+                        <div className="col-md-6">
+                            <div className="myLeftCtn"> 
+                              <div className="TrainingTimeSelection">
+                              <header>Select training time (in minutes):</header>
+                                <ButtonSemanticUI.Group className="big">
+                                  <ButtonSemanticUI className="yellow" onClick={() =>  this.updateTrainingTime(20)}>20</ButtonSemanticUI>
+                                  <ButtonSemanticUI.Or />
+                                  <ButtonSemanticUI className="orange" onClick={() => this.updateTrainingTime(30)}>30</ButtonSemanticUI>
+                                  <ButtonSemanticUI.Or />
+                                  <ButtonSemanticUI className="red" onClick={() => this.updateTrainingTime(40)}>40</ButtonSemanticUI>
+                                </ButtonSemanticUI.Group>
+                              </div>
+                              <div className="RestTimeSelection">
+                              <header>Select rest time (in seconds):</header>
+                                <ButtonSemanticUI.Group className="big">
+                                  <ButtonSemanticUI className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</ButtonSemanticUI>
+                                  <ButtonSemanticUI.Or />
+                                  <ButtonSemanticUI className="Blue " onClick={() => this.updateRestTime(30)}>30</ButtonSemanticUI>
+                                  <ButtonSemanticUI.Or />
+                                  <ButtonSemanticUI className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</ButtonSemanticUI>
+                                </ButtonSemanticUI.Group>
+                              </div>
+                            </div>
+                        </div> 
+                        <div className="col-md-6">
+                            <div className="myRightCtn colorBox">
+                                <div className="box text-white pb-5 text-center"><header>Create your training</header>
+                                    <p className="contact-text pt-4">
+                                      {((this.state.trainingtime !== 0) && (this.state.restTime !== 0)) ? (
+                                      <div className="Wrapper">
+                                      <div className="ContinueLinkChooseExercises animation-box">
+                                        <NavLink className="btn btn-primary" to = {{
+                                                    pathname: `/ExerciseForm/${this.state.trainingtime}/${this.state.restTime}`
+                                                              }}>
+                                                                      <span></span>
+                                                                      <span></span>
+                                                                      <span></span>
+                                                                      <span></span>
+                                                                    choose your exercises
+                                                    </NavLink>
+                                          </div>
+                                          <div className="ContinueLinkRandomExercises animation-box">
+                                              <NavLink className="btn btn-primary" to = {{
+                                                    pathname: `/Timer`,
+                                                    state: { myArrayVariableName: this.state.images}
+                                                              }}>
+                                                                  lucky random exercises
+                                                    </NavLink>
+                                          </div>
+                                      </div>
+                                      ) :
+                                      <div> </div> }
+                                  </p>    
+                                </div>                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
        {  ((this.state.trainingtime === 0) || (this.state.restTime === 0)) ? 
                  <Prompt when={formChanged} message="Are you sure you wanna do that?" /> : ""
        } 
