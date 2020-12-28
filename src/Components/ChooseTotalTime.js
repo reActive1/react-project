@@ -87,7 +87,7 @@ class ChooseTotalTime extends React.Component {
                         <div className="col-md-6">
                             <div className="myRightCtn colorBox">
                                 <div className="box text-white pb-5 text-center"><header>Create your training</header>
-                                    <p className="contact-text pt-4">
+                                    <div className="contact-text pt-4">
                                       {((this.state.trainingtime !== 0) && (this.state.restTime !== 0)) ? (
                                       <div className="Wrapper">
                                       <div className="ContinueLinkChooseExercises animation-box">
@@ -112,7 +112,7 @@ class ChooseTotalTime extends React.Component {
                                       </div>
                                       ) :
                                       <div> </div> }
-                                  </p>    
+                                  </div>    
                                 </div>                           
                             </div>
                         </div>

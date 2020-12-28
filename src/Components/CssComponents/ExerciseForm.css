@@ -45,3 +45,14 @@ body {
 .fa-trash {
     pointer-events: none;
 }
+.fas.fa-plus-square{
+    left:0!important;
+}
+
+.fs-30{
+    font-size:30px!important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color:white!important;
+}
