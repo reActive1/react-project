@@ -132,68 +132,71 @@ randomFunctionHandler = (e) => {
   render() {
       let {choosenExercisesArray} = this.state;
     return (
-      <Container fluid className="main-content-container px-4">
-        <Row className="page-header py-4 my-4">
-          <Col><h1> Hi you! choose your exercise:  </h1></Col>
-        </Row>
-         
-        <Row className="formRow">
-          <Col>
-            <form className="exercise-form">
-              <div>
-                <div>
-                  <button onClick={this.randomFunctionHandler} className="random-exercise-button"> Start random exercise!</button>
+    <div className="container card-container">
+      <div className="myCard">
+          <div className="row card-row">
+              <div className="col-md-6">
+                  <div className="myLeftCtn"> 
+                    <header className="fs-30 px-4">Hi you! choose your exercise: </header>
+                        <form className="exercise-form">
+                          <div>
+                            <div>
+                              <button onClick={this.randomFunctionHandler} className="random-exercise-button"> Start random exercise!</button>
+                            </div>
+                            <Label pointing='right'>Select exrecise type</Label>
+                            <Dropdown
+                              fluid
+                              selection
+                              //value={this.state.type}
+                              onChange={(event, data) => {
+                                {this.filterExercise(data)}
+                              }}
+                              options={this.state.Types_of_exercises}
+                            />
+                              <Label pointing='right'>Select exrecise</Label>
+                              <Dropdown
+                                fluid
+                                selection
+                                onChange={(event,data)=>{
+                                  this.setState({name: data.value})
+                                }}
+                                options={this.state.current_exercise}
+                              />
+                            <Label pointing='right'>Select time</Label>
+                            <Dropdown
+                              fluid
+                              selection
+                              onChange={(event,data)=>{
+                                this.setState({time:data.value})
+                              }}
+                              options={timeOptions}
+                            />
+                            <Label pointing='right'>Select repeats</Label>
+                            <Input 
+                              type="number"
+                              onChange={(event,data)=>{
+                                this.setState({repeats:data.value})
+                              }}
+                            />
+                            <button onClick={this.sumbitExerciseHandler} className="exercise-button" type="submit">
+                              <i className="fas fa-plus-square"></i>
+                            </button>         
+                          </div>
+                        </form> 
+                    </div>
+                </div> 
+                <div className="col-md-6">
+                    <div className="myRightCtn">
+                      <ExerciseList
+                        choosenExercisesArray={choosenExercisesArray} 
+                        updateExercisesArray={this.updateExercisesArrayHandler} 
+                        totalTrainingTime={this.props.match.params.trainingtime}
+                        />
+                    </div>
                 </div>
-                <Label pointing='right'>Select exrecise type</Label>
-                <Dropdown
-                  fluid
-                  selection
-                  //value={this.state.type}
-                  onChange={(event, data) => {
-                    {this.filterExercise(data)}
-                  }}
-                  options={this.state.Types_of_exercises}
-                />
-                  <Label pointing='right'>Select exrecise</Label>
-                  <Dropdown
-                    fluid
-                    selection
-                    onChange={(event,data)=>{
-                      this.setState({name: data.value})
-                    }}
-                    options={this.state.current_exercise}
-                  />
-                <Label pointing='right'>Select time</Label>
-                <Dropdown
-                  fluid
-                  selection
-                  onChange={(event,data)=>{
-                    this.setState({time:data.value})
-                  }}
-                  options={timeOptions}
-                />
-                <Label pointing='right'>Select repeats</Label>
-                <Input 
-                  type="number"
-                  onChange={(event,data)=>{
-                    this.setState({repeats:data.value})
-                  }}
-                />
-                <button onClick={this.sumbitExerciseHandler} className="exercise-button" type="submit">
-                  <i className="fas fa-plus-square"></i>
-                </button>         
-              </div>
-            </form> 
-          </Col>
-          <Col>
-            <ExerciseList
-              choosenExercisesArray={choosenExercisesArray} 
-              updateExercisesArray={this.updateExercisesArrayHandler} 
-              totalTrainingTime={this.props.match.params.trainingtime}
-              />
-          </Col>
-        </Row>
-     </Container>
+            </div>
+        </div>                
+      </div> 
     );
   }
 }
