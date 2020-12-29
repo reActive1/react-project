@@ -16,7 +16,7 @@ const ExerciseItem = ({exercise, choosenExercisesArray, updateExercisesArray}) =
                 </button>
             </Col>
             <Col xs="11">
-                <h3><span className="repeats" style={{color: "purple"}}>{exercise.repeats} x </span> {exercise.name}</h3> Duration per set: {exercise.time}  
+                <h3 className="text-white"><span className="repeats" style={{color: "purple"}}>{exercise.repeats} x </span> {exercise.name}</h3> Duration per set: {exercise.time}  
             </Col>
         </Row>
     );

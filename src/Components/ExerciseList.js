@@ -49,7 +49,7 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
     return(
         <Container>
             <Row className="py-4">
-                <h1>Training List</h1>
+                <h1 className="text-white">Training List</h1>
             </Row>
             {choosenExercisesArray.map((exercise) => (
                 <Exercise 
@@ -59,12 +59,14 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
                     key={exercise.id} />
             ))}
             <Row>
-                <h6>Current duration with rest breaks: <br /> 
+                <h6 className="text-white">Current duration with rest breaks: <br /> 
                 <strong>{convertAndDisplaySec(totalExerciseDuration)}</strong></h6>
                 {/* Option to display - Remaining time to total: */}
             </Row>
             <Row className="mt-3">
-            <NavLink to = {{ pathname: `/Timer/` }}>
+            <NavLink to = {{ pathname: `/Timer/`,
+                             props: { exercisesArray: choosenExercisesArray }
+                           }}>
                   <Button pill theme="info" size="lg" disabled={!isDurationFitTime}>START TRAINING</Button>
             </NavLink>
             {!isDurationFitTime && <Label basic color='red' pointing='left'>{msgToShow}</Label>}
