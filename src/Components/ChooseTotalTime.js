@@ -28,7 +28,6 @@ class ChooseTotalTime extends React.Component {
       trainingtime: trainingtime * 60 * 1000,
       formChanged: true
     })
-    console.log(this.state.trainingtime)
   };
 
   updateRestTime = (restTime) => {
@@ -36,7 +35,6 @@ class ChooseTotalTime extends React.Component {
       restTime: restTime,
       formChanged: true
       })
-      console.log("rest time: ", this.state.restTime);
     };
 
   componentDidMount() {
@@ -54,11 +52,8 @@ class ChooseTotalTime extends React.Component {
     }
   }
   btnEffectHundler(selectorName="bar-outer", barSelector="bar-grey"){
-    const barOuter = document.querySelector('.'+selectorName); //(".bar-outer");
-    // console.log("selector in handler: ", selectorName);
-    // console.log("barOuter in handler: ", barOuter);
+    const barOuter = document.querySelector('.'+selectorName);
     const options = document.querySelectorAll(`.${barSelector} .option`);
-    // console.log("options: ", options);
     let current = 1;
     options.forEach((option, i) => (option.index = i + 1));
     options.forEach(option =>
