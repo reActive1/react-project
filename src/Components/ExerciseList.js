@@ -24,7 +24,6 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
     //consider removing one restTime from total count
     //option to add a message of what diff in min:sec exists
     const isExercisesDurationFitTotalTime = () => {
-        const expectedDiff = 0.05;
         const actualDiff = totalTrainingTimeInSec - totalExerciseDuration;
         const timeLeftInMin = convertAndDisplaySec(actualDiff);
         let msgToShow = "";
@@ -35,7 +34,7 @@ const ExerciseList = ( {choosenExercisesArray, updateExercisesArray, totalTraini
             msgToShow = `${timeLeftInMin} left, don't be lazy ;)`;
         }
         return {
-                 isDurationFitTime: Math.abs(actualDiff) <= totalTrainingTimeInSec * expectedDiff,
+                 isDurationFitTime: actualDiff <= 0,
                  diff: actualDiff,
                  msgToShow
                 };
