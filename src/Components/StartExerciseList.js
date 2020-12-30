@@ -38,7 +38,7 @@ class StartExerciseList extends React.Component {
                         this.switchExercise();
                         return [false, 0]
                       }}
-                  isPlaying={true}
+                  isPlaying={this.props.isPlaying}
 
                   colors={[
                     ['#004777', 0.33],

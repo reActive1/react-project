@@ -54,7 +54,7 @@ function Timer(props) {
         <div className="button-wrapper">
           {displayPauseOrResumeButton()}
         </div>
-          <StartExerciseList exercisesArray={location.props.exercisesArray} />
+          <StartExerciseList exercisesArray={location.props.exercisesArray} isPlaying={isPlaying} />
       </div>
     )
 }
