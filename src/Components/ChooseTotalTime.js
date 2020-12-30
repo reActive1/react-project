@@ -1,5 +1,6 @@
 import React from "react";
 import "./CssComponents/ChooseTotalTime.css";
+import "./CssComponents/Btn-ChooseTotalTime.css";
 import {NavLink} from 'react-router-dom';
 import { Button as ButtonSemanticUI } from "semantic-ui-react";
 import {Prompt } from 'react-router-dom';
@@ -19,14 +20,15 @@ class ChooseTotalTime extends React.Component {
        ] };
     this.updateTrainingTime = this.updateTrainingTime.bind(this);
     this.updateRestTime = this.updateRestTime.bind(this);
+    this.btnEffectHundler = this.btnEffectHundler.bind(this);
   }
-
 
   updateTrainingTime = (trainingtime) => {
     this.setState({
       trainingtime: trainingtime * 60 * 1000,
       formChanged: true
     })
+    console.log(this.state.trainingtime)
   };
 
   updateRestTime = (restTime) => {
@@ -34,27 +36,48 @@ class ChooseTotalTime extends React.Component {
       restTime: restTime,
       formChanged: true
       })
+      console.log("rest time: ", this.state.restTime);
     };
 
-    componentDidMount() {
-      window.addEventListener('beforeunload', this.beforeunload.bind(this));
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.beforeunload.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.beforeunload.bind(this));
+  }
+
+  beforeunload(e) {
+    if (this.state.trainingtime !== 0 || this.state.restTime !== 0) {
+      e.preventDefault();
+      e.returnValue = "";
     }
+  }
+  btnEffectHundler(selectorName="bar-outer", barSelector="bar-grey"){
+    const barOuter = document.querySelector('.'+selectorName); //(".bar-outer");
+    // console.log("selector in handler: ", selectorName);
+    // console.log("barOuter in handler: ", barOuter);
+    const options = document.querySelectorAll(`.${barSelector} .option`);
+    // console.log("options: ", options);
+    let current = 1;
+    options.forEach((option, i) => (option.index = i + 1));
+    options.forEach(option =>
+      option.addEventListener("click", function() {
+          barOuter.className = selectorName;
+          barOuter.classList.add(`pos${option.index}`);
+          if (option.index > current) {
+            barOuter.classList.add("right");
+          } else if (option.index < current) {
+            barOuter.classList.add("left");
+          }
+          current = option.index;
+      }));
 
-    componentWillUnmount() {
-      window.removeEventListener('beforeunload', this.beforeunload.bind(this));
     }
-
-    beforeunload(e) {
-      if (this.state.trainingtime !== 0 || this.state.restTime !== 0) {
-        e.preventDefault();
-        e.returnValue = "";
-      }
-    }
-
-
+  
   render() {
       const {formChanged} = this.state;
-
+      {this.btnEffectHundler()}
       return (
         <div>
              <div className="container card-container">
@@ -62,25 +85,40 @@ class ChooseTotalTime extends React.Component {
                     <div className="row card-row">
                         <div className="col-md-6">
                             <div className="myLeftCtn"> 
-                              <div className="TrainingTimeSelection">
+                            <div className="TrainingTimeSelection">
                               <header>Select training time (in minutes):</header>
-                                <ButtonSemanticUI.Group className="big">
-                                  <ButtonSemanticUI className="yellow" onClick={() =>  this.updateTrainingTime(20)}>20</ButtonSemanticUI>
-                                  <ButtonSemanticUI.Or />
-                                  <ButtonSemanticUI className="orange" onClick={() => this.updateTrainingTime(30)}>30</ButtonSemanticUI>
-                                  <ButtonSemanticUI.Or />
-                                  <ButtonSemanticUI className="red" onClick={() => this.updateTrainingTime(40)}>40</ButtonSemanticUI>
-                                </ButtonSemanticUI.Group>
+                              <div className="container container-btn">
+                                <div className="bar bar-grey">
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(20)}>20</div>
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(30)}>30</div>
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(40)}>40</div>
+                                </div>
+                                <div className="bar-outer">
+                                  <div className="bar bar-purple">
+                                    <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(20)}>20</div>
+                                    <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(30)}>30</div>
+                                    <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(40)}>40</div>
+                                  </div>
+                                </div>
                               </div>
+                            </div>
                               <div className="RestTimeSelection">
                               <header>Select rest time (in seconds):</header>
-                                <ButtonSemanticUI.Group className="big">
-                                  <ButtonSemanticUI className="DeepSkyBlue" onClick={() =>  this.updateRestTime(20)}>20</ButtonSemanticUI>
-                                  <ButtonSemanticUI.Or />
-                                  <ButtonSemanticUI className="Blue " onClick={() => this.updateRestTime(30)}>30</ButtonSemanticUI>
-                                  <ButtonSemanticUI.Or />
-                                  <ButtonSemanticUI className="DarkBlue" onClick={() => this.updateRestTime(40)}>40</ButtonSemanticUI>
-                                </ButtonSemanticUI.Group>
+                              <div className="container container-btn">
+                                <div className="bar2 bar2-grey">
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(20)}>20</div>
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(30)}>30</div>
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(40)}>40</div>
+
+                                </div>
+                                <div className="bar2-outer">
+                                  <div className="bar2 bar-yellow">
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(20)}>20</div>
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(30)}>30</div>
+                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(40)}>40</div>
+                                  </div>
+                                </div>
+                              </div>
                               </div>
                             </div>
                         </div> 
