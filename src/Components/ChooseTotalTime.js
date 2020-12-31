@@ -9,8 +9,8 @@ class ChooseTotalTime extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      trainingtime: 0,
-      restTime: 0,
+      trainingtime: 20 * 60 * 1000,
+      restTime: 20,
       formChanged: false,
       images: [
         {name: "BirdDog", time: 5000},
@@ -20,7 +20,7 @@ class ChooseTotalTime extends React.Component {
        ] };
     this.updateTrainingTime = this.updateTrainingTime.bind(this);
     this.updateRestTime = this.updateRestTime.bind(this);
-    this.btnEffectHundler = this.btnEffectHundler.bind(this);
+    this.createClickListenersForButtons = this.createClickListenersForButtons.bind(this);
   }
 
   updateTrainingTime = (trainingtime) => {
@@ -39,6 +39,8 @@ class ChooseTotalTime extends React.Component {
 
   componentDidMount() {
     window.addEventListener('beforeunload', this.beforeunload.bind(this));
+    this.createClickListenersForButtons();
+    this.createClickListenersForButtons("bar2-outer", "bar2-grey");
   }
 
   componentWillUnmount() {
@@ -51,7 +53,8 @@ class ChooseTotalTime extends React.Component {
       e.returnValue = "";
     }
   }
-  btnEffectHundler(selectorName="bar-outer", barSelector="bar-grey"){
+
+  createClickListenersForButtons(selectorName="bar-outer", barSelector="bar-grey"){
     const barOuter = document.querySelector('.'+selectorName);
     const options = document.querySelectorAll(`.${barSelector} .option`);
     let current = 1;
@@ -72,7 +75,6 @@ class ChooseTotalTime extends React.Component {
   
   render() {
       const {formChanged} = this.state;
-      {this.btnEffectHundler()}
       return (
         <div>
              <div className="container card-container">
@@ -84,15 +86,15 @@ class ChooseTotalTime extends React.Component {
                               <header>Select training time (in minutes):</header>
                               <div className="container container-btn">
                                 <div className="bar bar-grey">
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(20)}>20</div>
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(30)}>30</div>
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(40)}>40</div>
+                                  <div className="option" onClick={() => this.updateTrainingTime(20)}>20</div>
+                                  <div className="option" onClick={() => this.updateTrainingTime(30)}>30</div>
+                                  <div className="option" onClick={() => this.updateTrainingTime(40)}>40</div>
                                 </div>
                                 <div className="bar-outer">
                                   <div className="bar bar-purple">
-                                    <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(20)}>20</div>
-                                    <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(30)}>30</div>
-                                    <div className="option" onMouseEnter={() => this.btnEffectHundler()} onClick={() => this.updateTrainingTime(40)}>40</div>
+                                    <div className="option" onClick={() => this.updateTrainingTime(20)}>20</div>
+                                    <div className="option" onClick={() => this.updateTrainingTime(30)}>30</div>
+                                    <div className="option" onClick={() => this.updateTrainingTime(40)}>40</div>
                                   </div>
                                 </div>
                               </div>
@@ -101,16 +103,15 @@ class ChooseTotalTime extends React.Component {
                               <header>Select rest time (in seconds):</header>
                               <div className="container container-btn">
                                 <div className="bar2 bar2-grey">
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(20)}>20</div>
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(30)}>30</div>
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(40)}>40</div>
-
+                                  <div className="option" onClick={() => this.updateRestTime(20)}>20</div>
+                                  <div className="option" onClick={() => this.updateRestTime(30)}>30</div>
+                                  <div className="option" onClick={() => this.updateRestTime(40)}>40</div>
                                 </div>
                                 <div className="bar2-outer">
                                   <div className="bar2 bar-yellow">
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(20)}>20</div>
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(30)}>30</div>
-                                  <div className="option" onMouseEnter={() => this.btnEffectHundler("bar2-outer", "bar2-grey")} onClick={() => this.updateRestTime(40)}>40</div>
+                                  <div className="option" onClick={() => this.updateRestTime(20)}>20</div>
+                                  <div className="option" onClick={() => this.updateRestTime(30)}>30</div>
+                                  <div className="option" onClick={() => this.updateRestTime(40)}>40</div>
                                   </div>
                                 </div>
                               </div>
