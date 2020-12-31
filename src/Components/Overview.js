@@ -13,7 +13,7 @@ class Overview extends React.Component {
 
     render(){
         const elements = [
-            {'name': "Racheli","role":"Web developer",'img': Racheli,'website':"https://racheliver.github.io/",'github':"https://github.com/racheliver",'linkedin': "https://www.linkedin.com/in/racheli-verechzon-5343bb123/","mail":"mailto:racheliver@gmail.com","about":"Development Business Website, Specialist Improving sites performance using  Vue.js/React, Loves to understand the needs of the site customers with datalayer and other tools for increasing sales."},
+            {'name': "Racheli","role":"Web developer",'img': Racheli,'website':"https://racheliver.github.io/",'github':"https://github.com/racheliver",'linkedin': "https://www.linkedin.com/in/racheli-verechzon-5343bb123/","mail":"mailto:racheliver@gmail.com","about":"Developer of business websites and expert in improving website performance through Vue.js / React, likes to understand the needs of site users. Builds a customized data layer and other tools that increase sales."},
             {'name': "Keren","role":"Web Developer",'img': Keren,'about': "about","website":"website","linkedin":"linkedin","github":"github","mail":"mail"},
             {'name': "Yael","role":"Web Developer",'img': Yael,'about': "about","website":"website","linkedin":"linkedin","github":"github","mail":"mail"},
             {'name': "Stav","role":"Web Developer",'img': Stav,  'about': "about","website":"website","linkedin":"linkedin","github":"github","mail":"mail"},
